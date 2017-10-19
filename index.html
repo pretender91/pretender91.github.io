@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="call-plugin-test">
+    </div>
+    <script type="text/javascript">
+      function loadScript ( url, callback ) {
+        const script = document.createElement( "script" )
+        script.type = "text/javascript"
+
+        if (script.addEventListener) {
+          script.addEventListener( "load", callback, false)
+        } else if (script.readyState) {
+          script.onreadystatechange = callback
+        }
+
+        script.src = url
+        script.crossOrigin = "anonymous"
+        document.body.appendChild( script )
+      }
+
+loadScript('https://my.pbx.avys.io/js/client.call-plugin.js', () => {
+  window.PBX.widget({
+    view: 'call-me',
+    element: 'call-plugin-test',
+    token: '204575d26228a1a96a142d9f02d897ec',
+    username: 'anatoly',
+    domain: 'test.pbx.avys.io',
+    callee: '111',
+    color: 'orange'
+  })
+})
+    </script>
+  </body>
+</html>
