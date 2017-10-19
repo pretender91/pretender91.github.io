@@ -12,8 +12,10 @@
         script.type = "text/javascript"
 
         if (script.addEventListener) {
+          console.log('addEventListener')
           script.addEventListener( "load", callback, false)
         } else if (script.readyState) {
+          console.log('onreadystatechange')
           script.onreadystatechange = callback
         }
 
@@ -22,7 +24,8 @@
         document.body.appendChild( script )
       }
 
-loadScript('https://my.pbx.avys.io/js/client.call-plugin.js', () => {
+loadScript('https://my.pbx.avys.io/js/client.call-plugin.js', function() {
+  console.log('script loaded')
   window.PBX.widget({
     view: 'call-me',
     element: 'call-plugin-test',
