@@ -4,18 +4,18 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <div id="call-plugin-test">
+    <div id="call-me">
     </div>
+    <div id="call-me-back"></div>
+
     <script type="text/javascript">
       function loadScript ( url, callback ) {
         const script = document.createElement( "script" )
         script.type = "text/javascript"
 
         if (script.addEventListener) {
-          console.log('addEventListener')
           script.addEventListener( "load", callback, false)
         } else if (script.readyState) {
-          console.log('onreadystatechange')
           script.onreadystatechange = callback
         }
 
@@ -25,15 +25,24 @@
       }
 
 loadScript('https://my.pbx.avys.io/js/client.call-plugin.js', function() {
-  console.log('script loaded')
   window.PBX.widget({
     view: 'call-me',
-    element: 'call-plugin-test',
-    token: '204575d26228a1a96a142d9f02d897ec',
+    element: 'call-me',
+    token: 'ffe0fb8bda1bce6ffc3bc54017ba35ea',
     username: 'anatoly',
     domain: 'test.pbx.avys.io',
     callee: '111',
     color: 'orange'
+  })
+
+
+  window.PBX.widget({
+    view: 'call-me-back',
+    element: 'call-me-back',
+    color: 'green',
+    position: {
+      left: '50%'
+    }
   })
 })
     </script>
